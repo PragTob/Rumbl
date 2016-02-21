@@ -3,7 +3,7 @@
 <table class="table">
   <%= for user <- @users do %>
     <tr>
-      <td><strong><%= first_name(user) %></strog></td>
+      <td><%= render "user.html", user: user %></td>
       <td><%= link "view", to: user_path(@conn, :show, user.id) %> </td>
     </tr>
   <% end %>
