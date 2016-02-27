@@ -8,3 +8,7 @@
     </tr>
   <% end %>
 </table>
+
+<p>
+  <%= link "Create new user", to: user_path(@conn, :new) %>
+</p>
