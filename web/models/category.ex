@@ -7,6 +7,14 @@ defmodule Rumbl.Category do
     timestamps
   end
 
+  def alphabetical(query) do
+    from c in query, order_by: c.name
+  end
+
+  def names_and_ids(query) do
+    from c in query, select: {c.name, c.id}
+  end
+
   @required_fields ~w(name)
   @optional_fields ~w()
 
