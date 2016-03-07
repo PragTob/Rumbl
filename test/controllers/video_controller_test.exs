@@ -3,7 +3,7 @@ defmodule Rumbl.VideoControllerTest do
 
   alias Rumbl.Video
 
-  test "requires user authentiction on all actions", %{con: conn} do
+  test "requires user authentiction on all actions", %{conn: conn} do
     Enum.each([
       get(conn, video_path(conn, :new)),
       get(conn, video_path(conn, :index)),
@@ -11,10 +11,12 @@ defmodule Rumbl.VideoControllerTest do
       get(conn, video_path(conn, :edit, "1")),
       put(conn, video_path(conn, :update, "1")),
       post(conn, video_path(conn, :create, %{})),
-      delete(conn, video_path(conn, :delete))], fn conn ->
-      assert html_respose(conn, 302)
-      assert conn.halted
-    end)
+      delete(conn, video_path(conn, :delete, "1"))],
+      fn conn ->
+        assert html_response(conn, 302)
+        assert conn.halted
+      end
+    )
   end
 
   @valid_attrs %{description: "some content", title: "some content", url: "some content"}
