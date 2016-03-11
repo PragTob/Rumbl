@@ -17,7 +17,7 @@ defmodule Rumbl.Permalink do
   end
 
   def cast(_) do
-    :error
+  :error
   end
 
   def dump(integer) when is_integer(integer) do
