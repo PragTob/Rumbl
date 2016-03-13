@@ -7,7 +7,8 @@ defmodule Rumbl.InfoSys.Wolfram do
     Task.start_link(__MODULE__, :fetch, [query, query_ref, owner, limit])
   end
 
-  @result_xpath  ~x"/queryresult/pod[contains(@title, 'Result') or
+  @result_xpath  ~x"/queryresult/pod[contains(@title, 'Basic definition') or
+                                     contains(@title, 'Result') or
                                      contains(@title, 'Definitions')]
                                  /subpod/plaintext/text()"
   def fetch(query_str, query_ref, owner, _limit) do
