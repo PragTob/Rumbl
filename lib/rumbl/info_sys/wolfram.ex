@@ -33,7 +33,6 @@ defmodule Rumbl.InfoSys.Wolfram do
       String.to_char_list(@wolfram_query_api <>
         "?appid=#{app_id()}" <>
         "&input=#{URI.encode(query_str)}&format=plaintext"))
-    IO.puts body
     body
   end
 
