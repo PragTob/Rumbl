@@ -91,7 +91,7 @@ defmodule Rumbl.VideoControllerTest do
   @tag login_as: "max"
   test "renders page not found when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
-      get conn, video_path(conn, :show, -1)
+      get conn, video_path(conn, :show, "100-miho")
     end
   end
 
@@ -106,8 +106,9 @@ defmodule Rumbl.VideoControllerTest do
   test "updates chosen resource and redirects when data is valid", %{conn: conn, user: user} do
     video = insert_video(user)
     conn = put conn, video_path(conn, :update, video), video: @valid_attrs
-    assert redirected_to(conn) == video_path(conn, :show, video)
-    assert Repo.get_by(Video, @valid_attrs)
+    updated_video = Repo.get_by(Video, @valid_attrs)
+    assert updated_video
+    assert redirected_to(conn) == video_path(conn, :show, updated_video)
   end
 
   @tag login_as: "max"
