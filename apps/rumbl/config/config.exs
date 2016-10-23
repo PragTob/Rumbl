@@ -8,7 +8,6 @@ use Mix.Config
 # Configures the endpoint
 config :rumbl, Rumbl.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
   secret_key_base: "h9rL9ZpACd36v0+VSp9ANbqCE5OXZnHKDsUunUrWGQC/UaWrggt88fJdSbfDJ4/j",
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: Rumbl.PubSub,
@@ -27,3 +26,5 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :rumbl, ecto_repos: [Rumbl.Repo]

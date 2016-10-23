@@ -12,7 +12,7 @@ defmodule Rumbl.User do
     timestamps
   end
 
-  def new_changeset(model, params \\ :empty) do
+  def new_changeset(model, params \\ %{}) do
     model
     |> cast(params, ~w(name username), [])
     |> unique_constraint(:username)
